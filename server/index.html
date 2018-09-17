@@ -44,8 +44,8 @@ var old_data = {}
 	 for (var person_id in data) {
 		 if (!old_data.hasOwnProperty(person_id)) {
 			 var img = $('<img id="' + person_id + '" style="position:absolute; top:50px">');
-			 var img_hand1 = $('<img id="' + person_id + '-hand1" style="position:absolute; top:50px; z-index:1">');
-			 var img_hand2 = $('<img id="' + person_id + '-hand2" style="position:absolute; top:50px; z-index:1">');
+			 var img_hand1 = $('<img id="' + person_id + '-hand1" style="position:absolute; top:50px; z-index:1; height:50px; width:50px">');
+			 var img_hand2 = $('<img id="' + person_id + '-hand2" style="position:absolute; top:50px; z-index:1; height:50px; width:50px">');
 			 img.appendTo('body');
 			 img_hand1.appendTo('body');
 			 img_hand2.appendTo('body');
@@ -53,7 +53,7 @@ var old_data = {}
 		 $('#' + person_id).attr("src", data[person_id]['avatar']);
 		 $('#' + person_id).animate({ top: data[person_id]['y'] + "%", left: data[person_id]['x'] + "%"},500);
 		 if (typeof data[person_id]['hand1_x'] != "undefined" && typeof data[person_id]['hand1_y'] != "undefined") {
-			 $('#' + person_id + "-hand1").attr("src", "https://png.pngtree.com/element_pic/00/16/10/1357ff62b403caf.jpg");
+			 $('#' + person_id + "-hand1").attr("src", "images/hand.svg");
 			 $('#' + person_id + "-hand1").animate({ top: data[person_id]['hand1_y'] + "%", left: data[person_id]['hand1_x'] + "%"},500);
 		 } else {
 			 $('#' + person_id + "-hand1").hide();
@@ -68,16 +68,16 @@ var old_data = {}
 		 
 		 
 		 
-		 if (person_id == "Billy" && data[person_id]['hand1_x'] > 15 && $("#RedSoxVideo").is(':visible')) {
+		 if (data[person_id]['hand1_x'] > 15 && $("#RedSoxVideo").is(':visible')) {
 			 console.log("bye");
 			 $("#RedSoxVideo" ).fadeOut( "fast");
 			 $("#RedSox" ).fadeIn( "fast");
 			 // $("#Tommy").animate({width: "700px", height: "400px"}, 3000);
-		 } else if (person_id == "Billy" && data[person_id]['hand1_x'] < 15 && !$("#RedSoxVideo").is(':visible')){
+		 } else if (data[person_id]['hand1_x'] < 15 && !$("#RedSoxVideo").is(':visible')){
 			 console.log("hi");
 			 $("#RedSox" ).fadeOut( "fast");
-			 $("#RedSoxVideo" ).fadeIn( "fast");
-			$("#Eric").animate({width: "500px", height: "500px"}, 3000);
+			 $("#RedSoxVideo" ).fadeIn( "fast");			//
+			// $("#Eric").animate({width: "500px", height: "500px"}, 3000);
 		 }
 	 }
 	 old_data = data;
